@@ -1,9 +1,11 @@
 package se.lexicon.model;
 
+import java.util.Objects;
+
 public class Student {
 
     private static int sequencer=0;
-    private int id;
+    private final int id;
     private String name;
     private String email;
     private String address;
@@ -43,4 +45,15 @@ public class Student {
         this.address = address;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return id == student.id && Objects.equals(name, student.name) && Objects.equals(email, student.email) && Objects.equals(address, student.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, address);
+    }
 }

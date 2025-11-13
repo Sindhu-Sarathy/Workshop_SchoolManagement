@@ -8,7 +8,7 @@ import java.util.List;
 
 public class StudentDaoImpl implements StudentDao {
 
-    private List<Student> students = new LinkedList<Student>();
+    private final List<Student> students = new LinkedList<Student>();
 
     @Override
     public Student save(Student student) {
