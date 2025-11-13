@@ -62,17 +62,6 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public boolean delete(Student student) {
-//To remove by using iterator
-//        Iterator<Student> itr=students.iterator();
-//        while(itr.hasNext()){
-//            Student stud=itr.next();
-//            if(stud.equals(student)){
-//                itr.remove();
-//                return true;
-//            }
-//
-//        }
-//        return false;
 
         return students.removeIf(o -> o.equals(student));
     }
