@@ -76,8 +76,10 @@ public class Course {
         else if(student==null){
             throw new IllegalArgumentException("The Student is null or empty");
         }
+        else {
 
-//        throw new RuntimeException("The Student was not registered!");
+            throw new RuntimeException("The Student was not registered!");
+        }
     }
 
     @Override
