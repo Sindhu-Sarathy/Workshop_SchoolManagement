@@ -18,8 +18,6 @@ class StudentTest {
         String email= student.getEmail();
         String address=student.getAddress();
 
-
-
         assertEquals("Sindhuja",name,"The name is incorrect");
         assertEquals("sarathy.sindhu@gmail.com",email,"The email is incorrect");
         assertEquals("Östergatan",address,"The address is incorrect");

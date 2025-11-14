@@ -65,6 +65,8 @@ public class CourseDaoImpl implements CourseDao{
 
     @Override
     public boolean delete(Course course) {
-        return courses.removeIf(o -> o.equals(course));
+        return courses.remove(course);
     }
+
+
 }

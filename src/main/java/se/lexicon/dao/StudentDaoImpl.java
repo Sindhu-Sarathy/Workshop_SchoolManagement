@@ -63,6 +63,6 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public boolean delete(Student student) {
 
-        return students.removeIf(o -> o.equals(student));
+        return students.remove(student);
     }
 }

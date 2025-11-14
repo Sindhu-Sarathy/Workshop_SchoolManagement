@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Course {
     private static int sequencer=0;
@@ -58,11 +59,47 @@ public class Course {
 
     public void register(Student student)
     {
-        students.add(student);
+        if(students.contains(student)){
+            throw new RuntimeException("Student already registered for this course!");
+        }
+        else if(student == null){
+            throw new IllegalArgumentException("The Student is null or empty");
+        }
+       students.add(student);
     }
 
     public void unregister(Student student)
     {
-        students.remove(student);
+        if(students.contains(student)) {
+            students.remove(student);
+        }
+        else if(student==null){
+            throw new IllegalArgumentException("The Student is null or empty");
+        }
+
+        throw new RuntimeException("The Student was not registered!");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return id == course.id && weekDuration == course.weekDuration && Objects.equals(courseName, course.courseName) && Objects.equals(startDate, course.startDate) && Objects.equals(students, course.students);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, courseName, startDate, weekDuration, students);
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", courseName='" + courseName + '\'' +
+                ", startDate=" + startDate +
+                ", weekDuration=" + weekDuration +
+                ", students=" + students +
+                '}';
     }
 }
