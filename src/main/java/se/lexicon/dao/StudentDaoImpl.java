@@ -13,7 +13,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public Student save(Student student) {
         if(students.contains(student)){
-            throw new RuntimeException("Student already registered for this course!");
+            throw new RuntimeException("Student already available!");
         }
         else if(student == null){
             throw new IllegalArgumentException("The Student is null or empty");
