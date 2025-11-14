@@ -12,6 +12,12 @@ public class CourseDaoImpl implements CourseDao{
 
     @Override
     public Course save(Course course) {
+        if(courses.contains(course)){
+            throw new RuntimeException("Student already registered for this course!");
+        }
+        else if(course == null){
+            throw new IllegalArgumentException("The Student is null or empty");
+        }
         courses.add(course);
         return course;
     }
@@ -65,6 +71,9 @@ public class CourseDaoImpl implements CourseDao{
 
     @Override
     public boolean delete(Course course) {
+        if(course==null){
+            throw new IllegalArgumentException("The course is null");
+        }
         return courses.remove(course);
     }
 

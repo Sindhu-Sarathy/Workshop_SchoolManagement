@@ -12,10 +12,13 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public Student save(Student student) {
-        //Adding the student to the list of students
+        if(students.contains(student)){
+            throw new RuntimeException("Student already registered for this course!");
+        }
+        else if(student == null){
+            throw new IllegalArgumentException("The Student is null or empty");
+        }
         students.add(student);
-
-        //returning the student
         return student;
     }
 
@@ -62,7 +65,9 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public boolean delete(Student student) {
-
+        if(student==null){
+            throw new IllegalArgumentException("The student is null");
+        }
         return students.remove(student);
     }
 }
